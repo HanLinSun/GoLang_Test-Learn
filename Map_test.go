@@ -19,7 +19,7 @@ func TestMap(t *testing.T){
 func TestMapElement(t *testing.T){
 	m3:=make(map[int]int,10)
 	t.Log(m3[2])
-	if v,ok:=m3[2];ok{//v是m3[2]的值，ok赋值若m3[2]存在则为true，否则为false
+	if v,ok:=m3[2];ok{//v是m3[2]的值，ok赋值若m3[2]存在则为true，否则为false(第二返回值判断法)
 		t.Logf("Key 2 is valid, its value is %d",v)
 	} else {
 		t.Log("Key 2 is not existed.")
