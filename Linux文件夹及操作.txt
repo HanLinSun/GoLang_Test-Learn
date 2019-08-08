@@ -1,0 +1,61 @@
+redis配置目录: /usr/local/redis/etc/redis.conf
+启动redis客户端: redis-server /usr/local/redis/etc/redis.conf
+mysql： /etc/mysql
+远程连接配置: mysql -u peo -p
+密码:peo123
+(该用户已被授权连接mysql数据库)
+参考教程:https://my.oschina.net/u/1013545/blog/180851
+
+Linux主机名:VM-0-13-ubuntu
+Linux查看本机IP: curl ifconfig.me
+用户名:ubuntu
+端口22
+实例IP:124.156.206.94 端口22
+新机器
+ grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option;
+
+Linux查看端口: netstat -ntlp //所有tcp端口
+netstat -an |grep 3306
+
+Linux Ubuntu改mysql设置: sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+注释bindIP可以允许其他IP连入设备(conf文件，BindIP作用是限定允许连接的IP)
+
+Go+Mysql：参考教程：https://www.cnblogs.com/wdliu/p/9330278.html
+
+redis
+Linux启动redis：
+参考教程：https://blog.csdn.net/guokaikevin/article/details/78946478
+连接使用的package: github.com/garyburd/redigo/redis
+
+
+CentOS：参考教程https://www.php.cn/mysql-tutorials-386847.html
+mysql登录密码:Scode1998.（注意点号是有的，英文模式下句号）
+登入mysql： mysql -u root -p
+密码：Scode1998.
+CentOS：可通过whereis redis查看配置目录
+redis参考教程:https://blog.csdn.net/qq_40808344/article/details/86717004
+
+
+Redis列表:
+LPUSH key value1 [value2]
+RPUSH key value1 [value2]
+LPUSHX
+RPUSHX
+
+取值:
+LLEN key
+LINDEX key index //获取指定索引元素
+LRANGE key start stop//获取指定范围元素
+
+
+
+
+Redis增删改查与mysql同步(简单二级缓存)
+参考教程:https://blog.csdn.net/weixin_42694428/article/details/82845634
+
+
+1、判断Redis中是否存在key，不存在，则查询数据库,并将结果同步到Redis。
+如果存在，直接查询可以。
+
+避免缓存穿透：持久层查询不到就返回空结果，查询时先判断缓存中是否exists(key)
+，有就直接返回空，没有则查询后返回
